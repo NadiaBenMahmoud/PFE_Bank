@@ -110,7 +110,7 @@ if st.button('Predict'):
   )
 
   accuracy = accuracy_score(y_test, y_pred)
-  st.text("The model's accuracy is : ", accuracy)
+  st.text(st.text(f"The model's accuracy is : {accuracy}"))
   conf_matrix = confusion_matrix(y_test, y_pred)
   plt.figure(figsize=(8, 6))
   sns.heatmap(conf_matrix,

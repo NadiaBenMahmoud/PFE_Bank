@@ -16,7 +16,7 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state='collapsed'
 )
-# filepath = r"C:\Users\Niiji\Desktop\Base_UIB.xlsx" # Download the data and change the path
+filepath = r"Base_UIB.xlsx" # Download the data and change the path
 df = pd.DataFrame(pd.read_excel(filepath))
 
 df = df.reset_index().rename(
@@ -36,7 +36,7 @@ df = df.reset_index().rename(
         }
     )
 
-df.drop('Client_Type_op', axis=1, inplace=True) #'index'
+df.drop('Client_Type_op', axis=1, inplace=True)
 df.set_index('num_compte', inplace=True)
 df['credit_class'] = df['revenu'].apply(lambda revenu : revenu >= 25.000)
 df['credit_class']=df['credit_en_cours'].apply(lambda credit : credit==0)

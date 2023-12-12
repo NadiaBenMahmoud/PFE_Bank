@@ -7,7 +7,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import seaborn as sns
 import matplotlib.pyplot as plt
 import streamlit as st
-from PIL import Image
+import xlrd
 
 # icon_img = Image.open('Iris.jpg') ## Change the img
 st.set_page_config(
@@ -16,8 +16,10 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state='collapsed'
 )
-filepath = r"Base_UIB.xlsx" # Download the data and change the path
-df = pd.DataFrame(pd.read_excel(filepath))
+
+filepath = xlrd.open_workbook('Base_UIB.xlsx')
+df = pd.read_excel(filepath)
+df = pd.DataFrame(df)
 
 df = df.reset_index().rename(
     columns={
@@ -96,7 +98,7 @@ credit_en_cours = st.slider(
 if st.button('Predict'):
   input_data = [[revenu, credit_en_cours]]
   y_pred = model.predict(input_data)
-  predicted_eligibility = df.target_names[y_pred[0]]
+  predicted_eligibility = y_pred[0]
 
   separation()
   st.mardown(
@@ -123,4 +125,4 @@ if st.button('Predict'):
   plt.xlabel('Prédictions')
   plt.ylabel('Vraies valeurs')
   plt.title('Matrice de Confusion\n', fontsize=20)
-  plt.show()
+  st.pyplot()

@@ -16,7 +16,7 @@ st.set_page_config(
     initial_sidebar_state='collapsed'
 )
 
-filepath = 'Base_UIB.xlsx'
+filepath = 'PFE_Bank/Base_UIB.xlsx'
 df = pd.read_excel(filepath)
 
 

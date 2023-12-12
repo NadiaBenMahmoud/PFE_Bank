@@ -781,33 +781,33 @@ credit_en_cours = st.slider(
 
 
 if st.button('Predict'):
-  input_data = [[revenu, credit_en_cours]]
-  y_pred = model.predict(input_data)
-  predicted_eligibility = y_pred[0]
+    input_data = [[revenu, credit_en_cours]]
+    y_pred = model.predict(input_data)
+    predicted_eligibility = y_pred[0]
 
-  separation()
-  st.mardown(
-    f"Predicted Eligibility:<p style='font-family:Lucida Console;"
-    f"text-align:center;"
-    f"margin-top: -20px;"
-    f"margin-left: 0%;"
-    f"font-size:30px;"
-    f"color:cyan;'>{predicted_eligibility}</p>",
-    unsafe_allow_html=True
-  )
+    separation()
+    st.markdown(
+        f"Predicted Eligibility:<p style='font-family:Lucida Console;"
+        f"text-align:center;"
+        f"margin-top: -20px;"
+        f"margin-left: 0%;"
+        f"font-size:30px;"
+        f"color:cyan;'>{predicted_eligibility}</p>",
+        unsafe_allow_html=True
+    )
 
-  accuracy = accuracy_score(y_test, y_pred)
-  st.text(f"The model's accuracy is : {accuracy}")
-  conf_matrix = confusion_matrix(y_test, y_pred)
-  plt.figure(figsize=(8, 6))
-  sns.heatmap(conf_matrix,
-              annot=True,
-              fmt='d',
-              cmap='inferno',
-              xticklabels=['False', 'True'],
-              yticklabels=['False', 'True']
-              )
-  plt.xlabel('Prédictions')
-  plt.ylabel('Vraies valeurs')
-  plt.title('Matrice de Confusion\n', fontsize=20)
-  st.pyplot()
+    accuracy = accuracy_score(y_test, y_pred)
+    st.text(f"The model's accuracy is : {accuracy}")
+    conf_matrix = confusion_matrix(y_test, y_pred)
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(conf_matrix,
+                annot=True,
+                fmt='d',
+                cmap='inferno',
+                xticklabels=['False', 'True'],
+                yticklabels=['False', 'True']
+                )
+    plt.xlabel('Predictions')
+    plt.ylabel('True Values')
+    plt.title('Confusion Matrix\n', fontsize=20)
+    st.pyplot(plt)

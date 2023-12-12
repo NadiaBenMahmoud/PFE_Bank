@@ -7,7 +7,6 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 import seaborn as sns
 import matplotlib.pyplot as plt
 import streamlit as st
-import xlrd
 
 # icon_img = Image.open('Iris.jpg') ## Change the img
 st.set_page_config(
@@ -112,7 +111,7 @@ if st.button('Predict'):
   )
 
   accuracy = accuracy_score(y_test, y_pred)
-  st.text(st.text(f"The model's accuracy is : {accuracy}"))
+  st.text(f"The model's accuracy is : {accuracy}")
   conf_matrix = confusion_matrix(y_test, y_pred)
   plt.figure(figsize=(8, 6))
   sns.heatmap(conf_matrix,

@@ -17,9 +17,9 @@ st.set_page_config(
     initial_sidebar_state='collapsed'
 )
 
-filepath = xlrd.open_workbook('Base_UIB.xlsx')
+filepath = 'Base_UIB.xlsx'
 df = pd.read_excel(filepath)
-df = pd.DataFrame(df)
+
 
 df = df.reset_index().rename(
     columns={
